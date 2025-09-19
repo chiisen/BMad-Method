@@ -225,3 +225,15 @@ This guide contains essential information about the BMad workflow and how to use
 📖 重要提示：請閱讀 docs/user-guide.md 中的使用者指南（也可安裝於 .bmad-core/user-guide.md）。
 本指南包含有關 BMad 工作流程以及如何有效使用代理的重要資訊。
 ```
+
+# 建立 Story
+```bash
+*create story 建立一個簡單的網頁版 todo list，用於測試 BMad-Method 的功能，越簡單越好，並記錄在 STORY.md 檔案裡面。
+```
+
+# 執行任務
+[啟用 GitHub Copilot + BMad Agents 專案開發流程](./docs/GitHubCopilot+BMadAgents.md)
+
+```bash
+*run task
+```

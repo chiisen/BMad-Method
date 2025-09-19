@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>簡易 Todo List</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    #todo-list { margin-top: 1em; }
+    .todo-item { display: flex; align-items: center; margin-bottom: 0.5em; }
+    .todo-text { flex: 1; }
+    button { margin-left: 1em; }
+    input[type="text"] { padding: 0.3em; }
+  </style>
+</head>
+<body>
+  <h1>簡易 Todo List</h1>
+  <input id="new-todo" type="text" placeholder="請輸入待辦事項...">
+  <button onclick="addTodo()">新增</button>
+  <div id="todo-list"></div>
+
+  <script>
+    const todoList = [];
+    function render() {
+      const listDiv = document.getElementById('todo-list');
+      listDiv.innerHTML = '';
+      todoList.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'todo-item';
+        div.innerHTML = `<span class="todo-text">${item}</span>` +
+          `<button onclick="removeTodo(${idx})">刪除</button>`;
+        listDiv.appendChild(div);
+      });
+    }
+    function addTodo() {
+      const input = document.getElementById('new-todo');
+      const value = input.value.trim();
+      if (value) {
+        todoList.push(value);
+        input.value = '';
+        render();
+      }
+    }
+    function removeTodo(idx) {
+      todoList.splice(idx, 1);
+      render();
+    }
+    render();
+  </script>
+</body>
+</html>
