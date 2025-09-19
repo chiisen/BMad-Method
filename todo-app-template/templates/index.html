@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMAD Todo List - 待辦清單</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- BMAD Design: 主要介面結構 -->
+    <div class="container">
+        <header>
+            <h1>🗂️ BMAD Todo List</h1>
+            <p class="subtitle">基於 BMAD 方法論的待辦清單應用</p>
+        </header>
+
+        <!-- 新增待辦事項區域 - Design 決策 -->
+        <section class="add-todo-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="todoInput" 
+                    placeholder="輸入新的待辦事項..." 
+                    maxlength="200"
+                >
+                <button id="addBtn" class="btn btn-primary">新增</button>
+            </div>
+        </section>
+
+        <!-- 統計資訊區域 - Design 決策 -->
+        <section class="stats-section">
+            <div class="stats">
+                <span class="stat-item">
+                    總計：<span id="totalCount">0</span>
+                </span>
+                <span class="stat-item">
+                    已完成：<span id="completedCount">0</span>
+                </span>
+                <span class="stat-item">
+                    待完成：<span id="pendingCount">0</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- 待辦清單顯示區域 - Design 決策 -->
+        <section class="todo-list-section">
+            <div id="todoList" class="todo-list">
+                <!-- Agent 將動態生成待辦項目 -->
+            </div>
+            
+            <!-- 空狀態提示 -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📝</div>
+                <p>還沒有待辦事項</p>
+                <p class="empty-hint">在上方輸入框中新增第一個待辦事項吧！</p>
+            </div>
+        </section>
+
+        <!-- 載入狀態 -->
+        <div id="loadingState" class="loading-state" style="display: none;">
+            <div class="spinner"></div>
+            <p>載入中...</p>
+        </div>
+    </div>
+
+    <!-- BMAD 方法論說明 -->
+    <footer class="bmad-info">
+        <details>
+            <summary>關於 BMAD 方法論</summary>
+            <div class="bmad-details">
+                <p><strong>Big Model</strong>：負責整體架構設計和需求分析</p>
+                <p><strong>Agent</strong>：實現具體功能模組和自動化任務</p>
+                <p><strong>Design</strong>：專注於使用者介面和體驗設計</p>
+            </div>
+        </details>
+    </footer>
+
+    <!-- 確認對話框 -->
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>確認刪除</h3>
+            <p>確定要刪除這個待辦事項嗎？</p>
+            <div class="modal-actions">
+                <button id="confirmDelete" class="btn btn-danger">確認刪除</button>
+                <button id="cancelDelete" class="btn btn-secondary">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
